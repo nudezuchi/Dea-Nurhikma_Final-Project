@@ -1,12 +1,14 @@
 package id.ac.unhas.final_project.activity
 
-import  .app.DatePickerDialog
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import id.ac.unhas.final_project.Converter
@@ -39,6 +41,7 @@ class UpdateActivity : AppCompatActivity() {
         const val EXTRA_IS_FINISHED_UPDATE = "false"
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update)
@@ -115,6 +118,7 @@ class UpdateActivity : AppCompatActivity() {
         TimePickerDialog(this, timeSetListener, hour, minute, true).show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateList(toDo: ToDo){
         val current = ZonedDateTime.now()
         val updatedDate = Converter.dateToInt(current)
